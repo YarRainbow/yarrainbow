@@ -10963,6 +10963,7 @@ var RootController = (function (_super) {
         return _this;
     }
     RootController.prototype.getConfiguration = function () {
+        var _this = this;
         return {
             childControllers: {
                 levelRoot: {
@@ -10977,7 +10978,9 @@ var RootController = (function (_super) {
             resources: {
                 font0: new html5_game_engine_1.FontResourceItem("AlligatorManRUS"),
             },
-            modelWatch: {},
+            modelWatch: {
+                timer: function () { return _this.updateMusic(); },
+            },
             sounds: [
                 {
                     "id": SoundConstants_1.SoundConstants.COINS,
@@ -11008,6 +11011,10 @@ var RootController = (function (_super) {
                     "type": html5_game_engine_1.SoundType.Music,
                 },
                 {
+                    "id": SoundConstants_1.SoundConstants.MUSIC_INTRO,
+                    "type": html5_game_engine_1.SoundType.Music,
+                },
+                {
                     "id": SoundConstants_1.SoundConstants.RICOCHET,
                     "type": html5_game_engine_1.SoundType.SFX,
                 },
@@ -11017,7 +11024,7 @@ var RootController = (function (_super) {
     RootController.prototype.onInitialize = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                this.soundManager.play(SoundConstants_1.SoundConstants.MUSIC_MAIN, true, SoundConstants_1.SoundLevels.musicMain);
+                this.updateMusic();
                 alert("\u041E\u0434\u043D\u0430\u0436\u0434\u044B \u0434\u043E\u0431\u043B\u0435\u0441\u0442\u043D\u044B\u0435 \u043C\u0430\u0433\u0438 \u0417\u0435\u0444\u0438\u0440\u043D\u043E\u0433\u043E \u043A\u043E\u0440\u043E\u043B\u0435\u0441\u0442\u0432\u0430 \u043E\u0431\u043D\u0430\u0440\u0443\u0436\u0438\u043B\u0438 \u0433\u0440\u043E\u0431\u043D\u0438\u0446\u0443 \u0434\u0440\u0435\u0432\u043D\u0435\u0433\u043E \u041F\u043E\u0432\u0435\u043B\u0438\u0442\u0435\u043B\u044F \u041B\u0430\u043A\u0440\u0438\u0446\u044B. \u041F\u043E\u0432\u0441\u044E\u0434\u0443 \u0431\u044B\u043B\u0438 \u043F\u0440\u0435\u0434\u043E\u0441\u0442\u0435\u0440\u0435\u0436\u0435\u043D\u0438\u044F \u043E \u0442\u043E\u043C, \u0447\u0442\u043E\u0431\u044B \u043D\u0438\u043A\u0442\u043E \u043D\u0435 \u0442\u0440\u043E\u0433\u0430\u043B \u0435\u0433\u043E \u0441\u043E\u043A\u0440\u043E\u0432\u0438\u0449\u0430, \u043D\u043E \u0436\u0430\u0434\u043D\u043E\u0441\u0442\u044C \u043C\u0430\u0433\u043E\u0432 \u0432\u0437\u044F\u043B\u0430 \u0432\u0435\u0440\u0445: \u043E\u043D\u0438 \u0443\u043D\u0435\u0441\u043B\u0438 \u0432\u0441\u0435 \u0441\u043E\u043A\u0440\u043E\u0432\u0438\u0449\u0430 \u0432 \u0441\u0432\u043E\u044E \u0412\u043E\u043B\u0448\u0435\u0431\u043D\u0443\u044E \u0431\u0430\u0448\u043D\u044E.\n\u0421\u043F\u0443\u0441\u0442\u044F \u043D\u0435\u0434\u0435\u043B\u044E \u0432 \u0431\u0430\u0448\u043D\u0435 \u043D\u0430\u0447\u0430\u043B\u043E\u0441\u044C \u0447\u0442\u043E-\u0442\u043E \u0441\u0442\u0440\u0430\u043D\u043D\u043E\u0435: \u043D\u0435\u043A\u043E\u0442\u043E\u0440\u044B\u0435 \u043C\u0430\u0433\u0438 \u043D\u0430\u0447\u0438\u043D\u0430\u043B\u0438 \u0431\u043E\u0440\u043C\u043E\u0442\u0430\u0442\u044C \u043D\u0430 \u043D\u0435\u0438\u0437\u0432\u0435\u0441\u0442\u043D\u043E\u043C \u044F\u0437\u044B\u043A\u0435, \u0430 \u0434\u0440\u0443\u0433\u0438\u0445 \u0441\u0440\u0430\u0437\u0438\u043B\u0430 \u043D\u0435\u0438\u0437\u0432\u0435\u0441\u0442\u043D\u0430\u044F \u0431\u043E\u043B\u0435\u0437\u043D\u044C. \u0421\u0442\u0440\u0430\u043D\u043D\u043E\u0441\u0442\u0438 \u0441\u0442\u0430\u043D\u043E\u0432\u0438\u043B\u0438\u0441\u044C \u0432\u0441\u0451 \u0441\u0438\u043B\u044C\u043D\u0435\u0435 \u0438 \u0441\u0438\u043B\u044C\u043D\u0435\u0435, \u0430 \u043D\u0435\u043A\u043E\u0442\u043E\u0440\u044B\u0445 \u043C\u0430\u0433\u043E\u0432 \u0434\u0430\u0436\u0435 \u043E\u0431\u0443\u044F\u043B\u0430 \u0430\u0433\u0440\u0435\u0441\u0441\u0438\u044F. \u0412\u0441\u0435 \u0437\u043D\u0430\u043B\u0438, \u0447\u0442\u043E \u0432\u0438\u043D\u043E\u0439 \u044D\u0442\u043E\u043C\u0443 \u0431\u044B\u043B\u0438 \u0441\u043E\u043A\u0440\u043E\u0432\u0438\u0449\u0430 \u041F\u043E\u0432\u0435\u043B\u0438\u0442\u0435\u043B\u044F \u041B\u0430\u043A\u0440\u0438\u0446\u044B, \u043D\u043E \u0442\u043E\u043B\u044C\u043A\u043E \u043E\u0434\u043D\u0430 \u0417\u0435\u0444\u0438\u0440\u043A\u0430 \u0438\u043C\u0435\u043B\u0430 \u0441\u043C\u0435\u043B\u043E\u0441\u0442\u044C \u043F\u043E\u0439\u0442\u0438 \u0438 \u0443\u043D\u0438\u0447\u0442\u043E\u0436\u0438\u0442\u044C \u0438\u0445. \u0412\u043E\u043E\u0440\u0443\u0436\u0438\u0432\u0448\u0438\u0441\u044C \u0432\u043E\u043B\u0448\u0435\u0431\u043D\u043E\u0439 \u043F\u0430\u043B\u043E\u0447\u043A\u043E\u0439 \u0438 \u0441\u0442\u0440\u0430\u043D\u043D\u044B\u043C \u0430\u0440\u0442\u0435\u0444\u0430\u043A\u0442\u043E\u043C \u0441 \u0443\u0440\u043E\u043A\u043E\u0432 \u0425\u0440\u043E\u043D\u043E\u043C\u0430\u0433\u0438\u0438, \u043E\u043D\u0430 \u043D\u0430\u0447\u0430\u043B\u0430 \u043F\u043E\u0434\u043D\u0438\u043C\u0430\u0442\u044C\u0441\u044F \u043A \u0421\u043E\u043A\u0440\u043E\u0432\u0438\u0449\u043D\u0438\u0446\u0435.\n\u041F\u043E\u043F\u0430\u0432 \u0432 \u0441\u043E\u043A\u0440\u043E\u0432\u0438\u0449\u043D\u0438\u0446\u0443, \u0417\u0435\u0444\u0438\u0440\u043A\u0430 \u0441\u043E\u0431\u0440\u0430\u043B\u0430 \u0432\u0441\u0435 \u0441\u0432\u043E\u0438 \u0441\u0438\u043B\u044B \u0438 \u0437\u043D\u0430\u043D\u0438\u044F, \u043F\u043E\u043B\u0443\u0447\u0435\u043D\u043D\u044B\u0435 \u0437\u0430 3 \u0443\u0440\u043E\u043A\u0430 \u041A\u043E\u043B\u0434\u043E\u0432\u0441\u0442\u0432\u0430, \u0438 \u043C\u0435\u0442\u043D\u0443\u043B\u0430 \u041E\u0433\u043D\u0435\u043D\u043D\u044B\u0439 \u0428\u0430\u0440 \u0432 \u043A\u0443\u0447\u0443 \u043F\u0440\u043E\u043A\u043B\u044F\u0442\u043E\u0433\u043E \u0437\u043E\u043B\u043E\u0442\u0430. \u041A\u0430\u043A\u043E\u0432\u043E \u0436\u0435 \u0431\u044B\u043B\u043E \u0435\u0451 \u0443\u0434\u0438\u0432\u043B\u0435\u043D\u0438\u0435, \u043A\u043E\u0433\u0434\u0430 \u043F\u0440\u043E\u043B\u0435\u0442\u0435\u0432 \u0441\u043A\u0432\u043E\u0437\u044C \u0440\u0430\u0441\u043F\u043B\u0430\u0432\u043B\u0435\u043D\u043D\u043E\u0435 \u0437\u043E\u043B\u043E\u0442\u043E, \u0428\u0430\u0440 \u043E\u0442\u0441\u043A\u043E\u0447\u0438\u043B \u043E\u0442 \u0437\u0430\u0449\u0438\u0442\u043D\u043E\u0433\u043E \u0431\u0430\u0440\u044C\u0435\u0440\u0430 \u0421\u043E\u043A\u0440\u043E\u0432\u0438\u0449\u043D\u0438\u0446\u044B \u043F\u0440\u044F\u043C\u043E \u0432 \u043D\u0435\u0451! \u0412\u043E\u0437\u0434\u0443\u0445 \u043F\u0440\u043E\u043F\u0438\u0442\u0430\u043B\u0441\u044F \u0437\u0430\u043F\u0430\u0445\u043E\u043C \u0436\u0436\u0451\u043D\u043E\u0433\u043E \u0441\u0430\u0445\u0430\u0440\u0430, \u0430 \u0417\u0435\u0444\u0438\u0440\u043A\u0430 \u043F\u043E\u043D\u044F\u043B\u0430, \u0447\u0442\u043E \u044D\u0442\u043E \u043A\u043E\u043D\u0435\u0446...\n\u041A\u0430\u043A \u0432\u0434\u0440\u0443\u0433 \u043E\u043D\u0430 \u0441\u043D\u043E\u0432\u0430 \u0441\u0442\u043E\u0438\u0442 \u043F\u0435\u0440\u0435\u0434 \u043D\u0435\u0432\u0440\u0435\u0434\u0438\u043C\u043E\u0439 \u0433\u0440\u0443\u0434\u043E\u0439 \u0441\u043E\u043A\u0440\u043E\u0432\u0438\u0449, \u0430 \u0430\u0440\u0442\u0435\u0444\u0430\u043A\u0442, \u0447\u0442\u043E \u043E\u043D\u0430 \u0443\u043C\u044B\u043A\u043D\u0443\u043B\u0430, \u043D\u0430\u0447\u0430\u043B \u0442\u0430\u0438\u043D\u0441\u0442\u0432\u0435\u043D\u043D\u043E \u0441\u0432\u0435\u0442\u0438\u0442\u0441\u044F.\n\"\u0412 \u044D\u0442\u043E\u0442 \u0440\u0430\u0437, \u0442\u043E\u0447\u043D\u043E \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u0441\u044F!\" - \u043F\u043E\u0434\u0443\u043C\u0430\u043B\u0430 \u0417\u0435\u0444\u0438\u0440\u043A\u0430 \u0438 \u0441\u043D\u043E\u0432\u0430 \u043D\u0430\u0447\u0430\u043B\u0430 \u0437\u0430\u043A\u0438\u0434\u044B\u0432\u0430\u0442\u044C \u041E\u0433\u043D\u0435\u043D\u043D\u044B\u043C\u0438 \u0448\u0430\u0440\u0430\u043C\u0438 \u0437\u043B\u043E\u0441\u0447\u0430\u0441\u0442\u043D\u043E\u0435 \u0441\u043E\u043A\u0440\u043E\u0432\u0438\u0449\u0435.");
                 return [2];
             });
@@ -11031,6 +11038,38 @@ var RootController = (function (_super) {
     };
     RootController.prototype.onUpdate = function (frameRate) {
         this._gameLogic.update(frameRate);
+    };
+    RootController.prototype.updateMusic = function () {
+        var isIntro = !this.$model.isStart;
+        var isRush = this.$model.timer <= 0;
+        var isAction = !isRush && this.$model.isStart;
+        var currentMusic;
+        if (isIntro)
+            currentMusic = "intro";
+        else if (isAction)
+            currentMusic = "action";
+        else if (isRush)
+            currentMusic = "rush";
+        if (this.$model.currentMusic === currentMusic)
+            return;
+        this.$model.currentMusic = currentMusic;
+        switch (currentMusic) {
+            case "intro":
+                this.soundManager.play(SoundConstants_1.SoundConstants.MUSIC_INTRO, true, SoundConstants_1.SoundLevels.musicIntro);
+                this.soundManager.stop(SoundConstants_1.SoundConstants.MUSIC_MAIN);
+                this.soundManager.stop(SoundConstants_1.SoundConstants.MUSIC_ACTION);
+                break;
+            case "action":
+                this.soundManager.play(SoundConstants_1.SoundConstants.MUSIC_MAIN, true, SoundConstants_1.SoundLevels.musicAction);
+                this.soundManager.stop(SoundConstants_1.SoundConstants.MUSIC_INTRO);
+                this.soundManager.stop(SoundConstants_1.SoundConstants.MUSIC_ACTION);
+                break;
+            case "rush":
+                this.soundManager.play(SoundConstants_1.SoundConstants.MUSIC_ACTION, true, SoundConstants_1.SoundLevels.musicAction);
+                this.soundManager.stop(SoundConstants_1.SoundConstants.MUSIC_MAIN);
+                this.soundManager.stop(SoundConstants_1.SoundConstants.MUSIC_INTRO);
+                break;
+        }
     };
     RootController = __decorate([
         __param(0, html5_game_engine_1.Inject),
@@ -11233,6 +11272,7 @@ var SoundConstants = (function () {
     SoundConstants.LIFE_LOSS = "LIFE_LOSS";
     SoundConstants.MUSIC_MAIN = "MUSIC_MAIN";
     SoundConstants.MUSIC_ACTION = "MUSIC_ACTION";
+    SoundConstants.MUSIC_INTRO = "MUSIC_INTRO";
     SoundConstants.RICOCHET = "RICOCHET";
     return SoundConstants;
 }());
@@ -11244,6 +11284,7 @@ var SoundLevels = (function () {
     }
     SoundLevels.musicMain = 1 * k_m;
     SoundLevels.musicAction = 1 * k_m;
+    SoundLevels.musicIntro = 1 * k_m;
     SoundLevels.manhole = 1 * k_e;
     SoundLevels.ricochet = .5 * k_e;
     SoundLevels.coin = .5 * k_e;
@@ -12953,6 +12994,7 @@ var TopPanelController = (function (_super) {
         };
     };
     TopPanelController.prototype.onInitialize = function () {
+        this.updateTime();
     };
     TopPanelController.prototype.onLandscape = function () {
     };
@@ -13049,6 +13091,10 @@ var main = (function () {
                 {
                     "id": SoundConstants_1.SoundConstants.RICOCHET,
                     "path": "/sounds/ricochet-1.wav",
+                },
+                {
+                    "id": SoundConstants_1.SoundConstants.MUSIC_INTRO,
+                    "path": "/sounds/intro.mp3",
                 },
             ],
             assetsRoot: gameCfg.resourcesRoot,
@@ -13319,7 +13365,8 @@ var GameLogic = (function () {
         this.gameModel.dashCooldown -= frameRate * 1000;
         if (this.count > 1) {
             this.count = 0;
-            this.gameModel.timer--;
+            if (this.gameModel.isStart)
+                this.gameModel.timer--;
         }
     };
     GameLogic.prototype.physicsUpdate = function (frameRate) {
@@ -13359,6 +13406,7 @@ var GameLogic = (function () {
         if (this.gameModel.fireballCooldown > 0 || Math.abs(pos.x) > 480 || Math.abs(pos.y) > 480)
             return;
         this.gameModel.fireballCooldown = fireballCooldown;
+        this.gameModel.isStart = true;
         this.soundManager.playSound(SoundConstants_1.SoundConstants.FIREBALL, 0, SoundConstants_1.SoundLevels.fireball);
         this.setImmortality();
         this.gameModel.levers.forEach(function (lever) { return lever.state = (lever.state === "hover") ? "hover" : "off"; });
@@ -13461,6 +13509,7 @@ var GameModel = (function () {
         this.goldHealth = goldHealth;
         this.goldStage = 4;
         this.playerScore = 0;
+        this.isStart = false;
         this.isManholeOpen = false;
         this.isGoldDropped = false;
         this.timer = timer;
@@ -13495,6 +13544,7 @@ var GameModel = (function () {
         this.createLevers();
         this.isManholeOpen = false;
         this.isGoldDropped = false;
+        this.isStart = false;
         this.timer = timer;
     };
     GameModel.prototype.restart = function () { };
